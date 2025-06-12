@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Professional - Lebenslauf</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .title {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .profile-summary {
+            font-size: 1.1em;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-right: 1px solid #e9ecef;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #764ba2;
+        }
+
+        .job {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #667eea;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .company {
+            font-weight: 500;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .duration {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .job-tasks {
+            list-style: none;
+        }
+
+        .job-tasks li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .job-tasks li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-category h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 5px 0;
+            color: #555;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .languages {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .language-item:last-child {
+            border-bottom: none;
+        }
+
+        .language-level {
+            background: #667eea;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8em;
+        }
+
+        .project-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .project-highlight h4 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .job-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .name {
+                font-size: 2em;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .print-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ PDF</button>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1 class="name">IT Professional</h1>
+                <div class="title">Systemtechniker & Digitalentwickler</div>
+                <p class="profile-summary">
+                    Engagierter Systemtechniker & autodidaktischer Digitalentwickler mit umfassender Praxis im
+                    Hardware-Support,
+                    der Betreuung von Rollouts, sowie der Umsetzung kreativer Digitalprojekte. Zahlreiche Fähigkeiten
+                    wurden mit
+                    Hilfe moderner KI-Werkzeuge selbstständig erlernt und auf reale Projekte angewendet.
+                </p>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="section">
+                    <h3 class="section-title">Kontakt</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <span>ihre.email@domain.de</span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <span>+49 XXX XXXXXXX</span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <span>Ihr Standort</span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">💼</div>
+                            <span>GitHub/LinkedIn</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Sprachkenntnisse</h3>
+                    <div class="languages">
+                        <div class="language-item">
+                            <span>Deutsch</span>
+                            <span class="language-level">Muttersprache</span>
+                        </div>
+                        <div class="language-item">
+                            <span>Englisch</span>
+                            <span class="language-level">Sehr gut</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Kernkompetenzen</h3>
+                    <div class="skill-category">
+                        <ul class="skill-list">
+                            <li><span class="highlight">Windows Client/Server</span></li>
+                            <li><span class="highlight">Netzwerkeinrichtung</span></li>
+                            <li><span class="highlight">Troubleshooting</span></li>
+                            <li><span class="highlight">Rollout-Management</span></li>
+                            <li><span class="highlight">KI-unterstützte Entwicklung</span></li>
+                            <li><span class="highlight">Webentwicklung</span></li>
+                            <li><span class="highlight">Game Design</span></li>
+                            <li><span class="highlight">Medienproduktion</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="section">
+                    <h2 class="section-title">Berufserfahrung</h2>
+
+                    <div class="job">
+                        <div class="job-header">
+                            <div>
+                                <div class="company">Datagroup SE</div>
+                                <div class="job-title">Systemtechniker</div>
+                            </div>
+                            <div class="duration">Okt 2022 – Okt 2023</div>
+                        </div>
+                        <ul class="job-tasks">
+                            <li>IT-Support und Konfiguration von Arbeitsplatzsystemen</li>
+                            <li>Troubleshooting und Incidentbearbeitung</li>
+                            <li>Anwenderunterstützung im Enterprise-Umfeld</li>
+                        </ul>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header">
+                            <div>
+                                <div class="company">Nevotec GmbH</div>
+                                <div class="job-title">Systemtechniker / Rollout-Techniker</div>
+                            </div>
+                            <div class="duration">Apr 2020 – Sep 2022</div>
+                        </div>
+                        <ul class="job-tasks">
+                            <li>Konfiguration und Auslieferung neuer Geräte</li>
+                            <li>Einrichtung und Austausch vor Ort</li>
+                            <li>Anwenderschulungen & technische Workshops</li>
+                        </ul>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header">
+                            <div>
+                                <div class="company">Gloria</div>
+                                <div class="job-title">Servicemitarbeiter (Gastronomie)</div>
+                            </div>
+                            <div class="duration">Jan 2016 – Apr 2020</div>
+                        </div>
+                        <ul class="job-tasks">
+                            <li>Schichtplanung und Qualitätskontrolle</li>
+                            <li>Kundenkommunikation & Menükonzeption</li>
+                            <li>Personalverantwortung in Spitzenzeiten</li>
+                        </ul>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header">
+                            <div>
+                                <div class="company">Dialog Direkt GmbH</div>
+                                <div class="job-title">Fundraiser</div>
+                            </div>
+                            <div class="duration">Feb 2014 – Jan 2016</div>
+                        </div>
+                        <ul class="job-tasks">
+                            <li>Kaltakquise für Vertragsabschlüsse</li>
+                            <li>Team-Briefings & Schulungen neuer Fundraiser</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Technische Kompetenzen</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Systemadministration</h4>
+                            <ul class="skill-list">
+                                <li>Windows Client/Server</li>
+                                <li>Netzwerkeinrichtung</li>
+                                <li>Imaging & Softwareverteilung</li>
+                                <li>Remedy, Outlook, Office Suite</li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-category">
+                            <h4>Webentwicklung & KI</h4>
+                            <ul class="skill-list">
+                                <li>HTML, CSS, JavaScript</li>
+                                <li>GitHub, Netlify, Render</li>
+                                <li>ChatGPT, Cursor AI, LLMs</li>
+                                <li>KI-unterstützte Entwicklung</li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-category">
+                            <h4>Game Design & Multimedia</h4>
+                            <ul class="skill-list">
+                                <li>HTML5 Multiplayer-Entwicklung</li>
+                                <li>2D-Sprite-Animationen</li>
+                                <li>Pixel-Art & UI-Gestaltung</li>
+                                <li>GIMP (10+ Jahre, Scripting)</li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-category">
+                            <h4>Audio & Medienproduktion</h4>
+                            <ul class="skill-list">
+                                <li>FL Studio (MIDI-Produktion)</li>
+                                <li>Sounddesign</li>
+                                <li>Visuelle Aufbereitung</li>
+                                <li>Automatisierung & Scripting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Herausragende Projekte</h2>
+                    <div class="project-highlight">
+                        <h4>🎮 HTML5 Multiplayer-Kartenspiel (WIP)</h4>
+                        <p>Entwicklung eines komplexen Multiplayer-Kartenspiels mit Plattformmechanik.
+                            <strong>Bereits implementiert:</strong> Game Loop, Multimedia-Integration, Animationssystem,
+                            Physics-Engine und
+                            PvP Online-Backend. <strong>In Entwicklung:</strong> Platformer-Mechaniken und
+                            Kartenspiel-Balancing.
+                            Modernste KI-Werkzeuge werden zur Unterstützung bei Code-Entwicklung, Design und Spiellogik
+                            eingesetzt.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">ChatGPT</span>
+                            <span class="tech-tag">Cursor AI</span>
+                            <span class="tech-tag">GitHub</span>
+                            <span class="tech-tag">Netlify</span>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">🎨 Multimedia-Produktionspipeline</div>
+                                <div class="company">10+ Jahre Erfahrung</div>
+                            </div>
+                        </div>
+                        <ul class="job-tasks">
+                            <li>Entwicklung automatisierter GIMP-Workflows mit Scripting</li>
+                            <li>Produktion & Strukturierung von MIDI-Dateien mit FL Studio</li>
+                            <li>Erstellung komplexer 2D-Sprite-Animationen und Pixel-Art</li>
+                            <li>Sounddesign & visuelle Aufbereitung für Games und Web</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
