@@ -176,36 +176,11 @@
             .print-button { display: none; }
         }
     </style>
-    <script>
-        // === Besucher-Tracking ===
-        const BACKEND_URL = 'https://dein-backend.onrender.com'; // Nach Render-Deployment anpassen
-        let sessionId = null;
-        let startTime = Date.now();
-
-        // Session starten
-        fetch(BACKEND_URL + '/api/track/start', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' }
-        })
-        .then(res => res.json())
-        .then(data => {
-            sessionId = data.sessionId;
-        });
-
-        // Session beenden (Verweildauer senden)
-        window.addEventListener('beforeunload', function () {
-            if (!sessionId) return;
-            const duration = Math.round((Date.now() - startTime) / 1000); // Sekunden
-            navigator.sendBeacon(
-                BACKEND_URL + '/api/track/end',
-                JSON.stringify({ sessionId, duration })
-            );
-        });
-    </script>
+    <!-- Backend-Tracking entfernt; Download direkt über Storj-Link -->
 </head>
 
 <body>
-    <a class="print-button" href="file:///C:/Users/skank/Documents/Bewerbung/Llebenslauf_Ehinger_252.pdf" download>⬇ Download CV (PDF)</a>
+    <a class="print-button" href="https://link.storjshare.io/raw/jwmzhtx6kerqip2yxwltyd3aeg7q/aaa/Llebenslauf_Ehinger_252.pdf" download>⬇ Download CV (PDF)</a>
 
     <div class="container">
         <div class="header">
