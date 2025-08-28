@@ -59,6 +59,12 @@ app.get('/api/stats', async (req, res) => {
   }
 });
 
+// PDF direct download redirect
+app.get('/api/pdf', (req, res) => {
+  const directLink = 'https://link.storjshare.io/raw/jwmzhtx6kerqip2yxwltyd3aeg7q/aaa/Llebenslauf_Ehinger_252.pdf';
+  res.redirect(302, directLink);
+});
+
 // MongoDB Connect & Server Start
 const PORT = process.env.PORT || 8080;
 const MONGO_URL = process.env.MONGO_URL;
